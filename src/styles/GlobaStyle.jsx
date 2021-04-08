@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     --white: #eeeeee;
     --white-highlighted: rgba(255, 255, 255, 0.5);
     --red: #ec4546;
+    --heading-red-bg: #cc4d4c;
     --light-red: #ef5a5a;
 
     font-size: 62.5%;
@@ -19,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-size: 1.6rem;
     font-family: "Roboto", sans-serif;
+    color: var(--white);
   }
 `;
 

@@ -5,7 +5,6 @@ import ArrowButton from "./ArrowButton";
 
 const StyledDiv = styled.div`
   text-align: center;
-  color: var(--white);
 `;
 
 const Header = styled.h2`

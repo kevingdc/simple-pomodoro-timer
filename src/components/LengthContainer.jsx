@@ -10,41 +10,43 @@ const StyledDiv = styled.div`
   display: flex;
 `;
 
-class LengthContainer extends React.Component {
-  render() {
-    const { break: breakLength, session, increment, decrement } = this.props;
-    return (
-      <StyledDiv>
-        <LengthSection
-          label="Break Length"
-          labelId="break-label"
-          length={breakLength}
-          lengthId="break-length"
-          onClickDown={() => decrement("break")}
-          downId="break-decrement"
-          onClickUp={() => increment("break")}
-          upId="break-increment"
-        />
+const LengthContainer = ({
+  break: breakLength,
+  session,
+  increment,
+  decrement,
+}) => {
+  return (
+    <StyledDiv>
+      <LengthSection
+        label="Break Length"
+        labelId="break-label"
+        length={breakLength}
+        lengthId="break-length"
+        onClickDown={() => decrement("break")}
+        downId="break-decrement"
+        onClickUp={() => increment("break")}
+        upId="break-increment"
+      />
 
-        <LengthSection
-          label="Session Length"
-          labelId="session-label"
-          length={session}
-          lengthId="session-length"
-          onClickDown={() => decrement("session")}
-          downId="session-decrement"
-          onClickUp={() => increment("session")}
-          upId="session-increment"
-        />
-      </StyledDiv>
-    );
-  }
-}
+      <LengthSection
+        label="Session Length"
+        labelId="session-label"
+        length={session}
+        lengthId="session-length"
+        onClickDown={() => decrement("session")}
+        downId="session-decrement"
+        onClickUp={() => increment("session")}
+        upId="session-increment"
+      />
+    </StyledDiv>
+  );
+};
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ timer }) => {
   return {
-    break: state.timer.break,
-    session: state.timer.session,
+    break: timer.break,
+    session: timer.session,
   };
 };
 
