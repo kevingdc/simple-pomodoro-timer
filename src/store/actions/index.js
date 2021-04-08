@@ -1,1 +1,1 @@
-export * from "./sampleActions";
+export * from "./timerActions";

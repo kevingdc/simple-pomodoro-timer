@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import sampleReducer from "./sampleReducer";
+import timerReducer from "./timerReducer";
 
-const rootReducer = combineReducers({ sample: sampleReducer });
+const rootReducer = combineReducers({ sample: timerReducer });
 
 export default rootReducer;

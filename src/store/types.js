@@ -1,3 +1,6 @@
-export const sampleTypes = {
-  SAMPLE: "SAMPLE",
+export const timerTypes = {
+  TOGGLE_TIMER: "TOGGLE_TIMER",
+  RESET: "RESET",
+  INCREMENT: "INCREMENT",
+  DECREMENT: "DECREMENT",
 };
