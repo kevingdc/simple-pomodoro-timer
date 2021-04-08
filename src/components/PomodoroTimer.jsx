@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import BreakLength from "../containers/BreakLength";
+import LengthContainer from "./LengthContainer";
 
 const StyledDiv = styled.div`
   background-color: var(--light-red);
@@ -9,7 +9,7 @@ const StyledDiv = styled.div`
 const PomodoroTimer = () => {
   return (
     <StyledDiv>
-      <BreakLength />
+      <LengthContainer />
     </StyledDiv>
   );
 };

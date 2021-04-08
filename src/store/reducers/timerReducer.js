@@ -39,7 +39,10 @@ const handleIncrementDecrement = (state, type, payload) => {
     timeLeft = newLength * 60;
   }
 
-  return { ...state, lengthType: newLength, timeLeft };
+  const nextState = { ...state, timeLeft };
+  nextState[lengthType] = newLength;
+
+  return nextState;
 };
 
 export default timerReducer;
