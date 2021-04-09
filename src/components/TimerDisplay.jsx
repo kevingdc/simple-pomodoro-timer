@@ -13,7 +13,7 @@ const Header = styled.h1`
   margin: 4rem 1rem 1rem 1rem;
   background-color: var(--heading-red-bg);
   padding: 0.5rem 2rem;
-  border-radius: 3px;
+  border-radius: var(--border-radius);
 `;
 
 const TimeDiv = styled.div`
@@ -23,8 +23,8 @@ const TimeDiv = styled.div`
 const TimerDisplay = ({ running, timeLeft }) => {
   return (
     <StyledDiv>
-      <Header>{running.toUpperCase()}</Header>
-      <TimeDiv>{secondsToTime(timeLeft)}</TimeDiv>
+      <Header id="timer-label">{running.toUpperCase()}</Header>
+      <TimeDiv id="time-left">{secondsToTime(timeLeft)}</TimeDiv>
     </StyledDiv>
   );
 };
@@ -39,8 +39,6 @@ const secondsToTime = time => {
 
   return m + ":" + s;
 };
-
-console.log(secondsToTime(7735));
 
 const mapStateToProps = ({ timer }) => {
   return {

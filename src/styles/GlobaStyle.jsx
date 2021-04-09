@@ -4,10 +4,11 @@ const GlobalStyle = createGlobalStyle`
   :root {
     /* Variables */
     --white: #eeeeee;
-    --white-highlighted: rgba(255, 255, 255, 0.5);
+    --white-highlighted: rgb(205, 205, 205);
     --red: #ec4546;
     --heading-red-bg: #cc4d4c;
     --light-red: #ef5a5a;
+    --border-radius: 4px;
 
     font-size: 62.5%;
   }
