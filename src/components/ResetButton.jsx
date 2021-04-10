@@ -12,6 +12,23 @@ const Icon = styled.i`
   line-height: 1.6;
   display: inline-flex;
   align-items: center;
+  transition: transform 0.3s ease-in;
+
+  :hover {
+    animation-name: rotate;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 `;
 
 const ResetButton = ({ reset }) => {

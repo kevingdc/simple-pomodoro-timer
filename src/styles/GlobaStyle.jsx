@@ -4,7 +4,8 @@ const GlobalStyle = createGlobalStyle`
   :root {
     /* Variables */
     --white: #eeeeee;
-    --white-highlighted: rgb(205, 205, 205);
+    --white-shadow: rgb(205, 205, 205);
+    --white-hover: rgb(235, 235, 235);
     --red: #ec4546;
     --heading-red-bg: #cc4d4c;
     --light-red: #ef5a5a;
