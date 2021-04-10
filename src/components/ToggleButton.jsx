@@ -12,10 +12,28 @@ const StyledButton = styled.button`
   font-size: 2rem;
   border-radius: var(--border-radius);
   border: medium none;
+  box-sizing: border-box;
   margin: 1rem 1rem 1.6rem 1rem;
   border: 2px solid var(--white);
-  /* box-shadow: var(--white-shadow) 0px 6px 0px; */
-  transition: background-color 0.2s ease-in;
+  overflow: hidden;
+  position: relative;
+  display: block;
+
+  :after {
+    background-color: var(--light-red);
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    transform: translateX(-150%) skewX(45deg);
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    z-index: 0;
+    box-sizing: border-box;
+    margin: 0;
+  }
 
   ${({ isRunning }) => {
     if (isRunning) {
@@ -28,21 +46,52 @@ const StyledButton = styled.button`
   }}
 
   :hover {
-    background-color: transparent;
-    color: var(--white);
-    /* box-shadow: var(--red) 0px 6px 0px; */
+    :after {
+      transform: translateX(0) skew(0);
+    }
   }
 
-  :active {
-    box-shadow: none;
-    transform: translateY(6px);
+  :hover span span {
+    transform: translateY(-100%);
   }
+
+  :hover span span + span {
+    transform: translateY(0%);
+  }
+`;
+
+const SpanCover = styled.span`
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: block;
+`;
+
+const SpanInitial = styled.span`
+  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  display: block;
+  position: relative;
+`;
+
+const SpanHover = styled.span`
+  bottom: 0;
+  color: var(--white);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  display: block;
 `;
 
 const ToggleButton = ({ isRunning, toggleTimer }) => {
   return (
     <StyledButton id="start-stop" onClick={toggleTimer} isRunning={isRunning}>
-      {isRunning ? "STOP" : "START"}
+      <SpanCover>
+        <SpanInitial>{isRunning ? "STOP" : "START"}</SpanInitial>
+        <SpanHover>{isRunning ? "STOP" : "START"}</SpanHover>
+      </SpanCover>
     </StyledButton>
   );
 };
