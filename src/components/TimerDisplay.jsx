@@ -1,5 +1,8 @@
+import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+
+import { decrementTimeLeft } from "../store/actions";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -20,31 +23,74 @@ const TimeDiv = styled.div`
   font-size: 8rem;
 `;
 
-const TimerDisplay = ({ running, timeLeft }) => {
-  return (
-    <StyledDiv>
-      <Header id="timer-label">{running.toUpperCase()}</Header>
-      <TimeDiv id="time-left">{secondsToTime(timeLeft)}</TimeDiv>
-    </StyledDiv>
-  );
-};
+class TimerDisplay extends React.Component {
+  constructor(props) {
+    super(props);
 
-const secondsToTime = time => {
-  const m = Math.floor(time / 60)
-    .toString()
-    .padStart(2, "0");
-  const s = Math.floor(time % 60)
-    .toString()
-    .padStart(2, "0");
+    this.interval = null;
+  }
 
-  return m + ":" + s;
-};
+  componentDidUpdate() {
+    this.setDecrementInterval();
+  }
+
+  componentWillUnmount() {
+    this.clearDecrementInterval();
+  }
+
+  setDecrementInterval = () => {
+    const { isRunning, decrementTimeLeft } = this.props;
+
+    if (isRunning && this.interval === null) {
+      this.interval = setInterval(() => {
+        decrementTimeLeft();
+      }, 1000);
+    } else if (!isRunning) {
+      this.clearDecrementInterval();
+    }
+  };
+
+  clearDecrementInterval = () => {
+    clearInterval(this.interval);
+    this.interval = null;
+  };
+
+  secondsToTime = time => {
+    const m = Math.floor(time / 60)
+      .toString()
+      .padStart(2, "0");
+    const s = Math.floor(time % 60)
+      .toString()
+      .padStart(2, "0");
+
+    return m + ":" + s;
+  };
+
+  render() {
+    const { running, timeLeft } = this.props;
+    return (
+      <StyledDiv>
+        <Header id="timer-label">{running.toUpperCase()}</Header>
+        <TimeDiv id="time-left">{this.secondsToTime(timeLeft)}</TimeDiv>
+      </StyledDiv>
+    );
+  }
+}
 
 const mapStateToProps = ({ timer }) => {
   return {
+    isRunning: timer.isRunning,
     running: timer.running,
     timeLeft: timer.timeLeft,
   };
 };
 
-export default connect(mapStateToProps, null)(TimerDisplay);
+const mapDispatchToProps = dispatch => {
+  return {
+    decrementTimeLeft() {
+      dispatch(decrementTimeLeft());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TimerDisplay);

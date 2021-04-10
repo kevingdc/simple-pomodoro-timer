@@ -25,3 +25,9 @@ export const reset = () => {
     type: timerTypes.RESET,
   };
 };
+
+export const decrementTimeLeft = () => {
+  return {
+    type: timerTypes.DECREMENT_TIME_LEFT,
+  };
+};
