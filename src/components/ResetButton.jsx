@@ -9,16 +9,16 @@ const Icon = styled.i`
   font-size: 1.2rem;
   padding: 1rem;
   margin: 0.5rem;
-  line-height: 1.6;
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
   transition: transform 0.3s ease-in;
 
   :hover {
     animation-name: rotate;
     animation-duration: 0.8s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
+    animation-timing-function: var(--cubic-bezier);
   }
 
   @keyframes rotate {

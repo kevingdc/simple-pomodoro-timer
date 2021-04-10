@@ -18,6 +18,7 @@ const StyledButton = styled.button`
   overflow: hidden;
   position: relative;
   display: block;
+  cursor: pointer;
 
   :after {
     background-color: var(--light-red);
@@ -29,7 +30,7 @@ const StyledButton = styled.button`
     top: 0;
     position: absolute;
     transform: translateX(-150%) skewX(45deg);
-    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: transform 0.5s var(--cubic-bezier);
     z-index: 0;
     box-sizing: border-box;
     margin: 0;
@@ -68,7 +69,7 @@ const SpanCover = styled.span`
 `;
 
 const SpanInitial = styled.span`
-  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.3s var(--cubic-bezier);
   display: block;
   position: relative;
 `;
@@ -81,7 +82,7 @@ const SpanHover = styled.span`
   right: 0;
   top: 0;
   transform: translateY(100%);
-  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.3s var(--cubic-bezier);
   display: block;
 `;
 

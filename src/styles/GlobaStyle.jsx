@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     --heading-red-bg: #cc4d4c;
     --light-red: #ef5a5a;
     --border-radius: 4px;
+    --cubic-bezier: cubic-bezier(0.215, 0.61, 0.355, 1);
 
     font-size: 62.5%;
   }

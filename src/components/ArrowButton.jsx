@@ -1,6 +1,13 @@
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+
+const Icon = styled.i`
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+`;
 
 const ArrowButton = ({ id, direction, onClick }) => {
   let icon = null;
@@ -8,13 +15,15 @@ const ArrowButton = ({ id, direction, onClick }) => {
   else if (direction === "down") icon = faAngleDown;
 
   return (
-    <FontAwesomeIcon
-      id={id}
-      icon={icon}
-      size="2x"
-      color="var(--white)"
-      onClick={onClick}
-    />
+    <Icon>
+      <FontAwesomeIcon
+        id={id}
+        icon={icon}
+        size="2x"
+        color="var(--white)"
+        onClick={onClick}
+      />
+    </Icon>
   );
 };
 
