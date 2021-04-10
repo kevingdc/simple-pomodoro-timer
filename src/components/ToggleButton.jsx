@@ -88,7 +88,7 @@ const SpanHover = styled.span`
 
 const ToggleButton = ({ isRunning, toggleTimer }) => {
   return (
-    <StyledButton id="start-stop" onClick={toggleTimer} isRunning={isRunning}>
+    <StyledButton id="start_stop" onClick={toggleTimer} isRunning={isRunning}>
       <SpanCover>
         <SpanInitial>{isRunning ? "STOP" : "START"}</SpanInitial>
         <SpanHover>{isRunning ? "STOP" : "START"}</SpanHover>

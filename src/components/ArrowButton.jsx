@@ -15,14 +15,8 @@ const ArrowButton = ({ id, direction, onClick }) => {
   else if (direction === "down") icon = faAngleDown;
 
   return (
-    <Icon>
-      <FontAwesomeIcon
-        id={id}
-        icon={icon}
-        size="2x"
-        color="var(--white)"
-        onClick={onClick}
-      />
+    <Icon id={id} onClick={onClick}>
+      <FontAwesomeIcon icon={icon} size="2x" color="var(--white)" />
     </Icon>
   );
 };

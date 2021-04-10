@@ -6,6 +6,7 @@ const initialState = {
   timeLeft: 1500,
   isRunning: false,
   running: "session",
+  audioPlaying: false,
 };
 
 const timerReducer = (state = initialState, { type, payload }) => {
@@ -19,17 +20,28 @@ const timerReducer = (state = initialState, { type, payload }) => {
     case timerTypes.RESET:
       return initialState;
     case timerTypes.DECREMENT_TIME_LEFT:
-      let { timeLeft, running } = state;
+      let { timeLeft, running, audioPlaying } = state;
       timeLeft = state.timeLeft - 1;
 
-      if (timeLeft <= 0) {
+      if (timeLeft < 0) {
         if (running === "session") running = "break";
         else if (running === "break") running = "session";
 
         timeLeft = state[running] * 60;
+        audioPlaying = true;
       }
 
-      return { ...state, timeLeft, running };
+      return { ...state, timeLeft, running, audioPlaying };
+    case timerTypes.TOGGLE_AUDIO:
+      const { isPlaying } = payload;
+
+      let playing = !state.audioPlaying;
+
+      if (isPlaying !== undefined) {
+        playing = isPlaying;
+      }
+
+      return { ...state, audioPlaying: playing };
     default:
       return state;
   }

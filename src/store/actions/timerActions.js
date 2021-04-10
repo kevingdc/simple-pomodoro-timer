@@ -31,3 +31,10 @@ export const decrementTimeLeft = () => {
     type: timerTypes.DECREMENT_TIME_LEFT,
   };
 };
+
+export const toggleAudio = isPlaying => {
+  return {
+    type: timerTypes.TOGGLE_AUDIO,
+    payload: { isPlaying },
+  };
+};
